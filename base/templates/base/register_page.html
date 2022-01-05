@@ -1,0 +1,13 @@
+{%extends 'main.html' %}
+{% block content %}
+<div>
+
+    <form action="" method="post">
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter Username..." />
+    </form>
+    <p>Already signed up?</p>
+    <a href="{% url 'loginPage' %}">Log in</a>
+</div>
+
+{% endblock content %} 
