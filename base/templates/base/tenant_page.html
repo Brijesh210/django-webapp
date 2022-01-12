@@ -1,2 +1,24 @@
+<style>
+    .home-container {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+    }
+  </style>
+  
 <h1>tenant page</h1>
+<hr/>
+{% include 'base/tenant_form.html' %}
+
+<hr>
+<div class = "home-container">
+    <div>Creating issue
+      <hr>
+      <a href="{%url 'issueForm'%}">create issue</a>
+    </div>
+
+    <div>Number of Issues
+      <hr>
+    </div>
+
+</div>
 

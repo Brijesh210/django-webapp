@@ -18,7 +18,7 @@ class Room(models.Model):
     name = models.CharField(max_length=50 , null=True, unique=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE)    
     description = models.TextField(max_length=200, null=True)
-    
+
     def __str__(self):
             return self.name
         
@@ -30,5 +30,8 @@ class Issue(models.Model):
     description = models.TextField(max_length=300)
     isSolve = models.BooleanField(default=False)
 
-    # issue_image = models.ImageField(null = True, default="avatar.avg")
+    def __str__(self):
+        return self.name
 
+    
+    # issue_image = models.ImageField(null = True, default="avatar.avg")

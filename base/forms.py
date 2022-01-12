@@ -18,7 +18,14 @@ class RoomForm(ModelForm):
         model = Room
         fields = [ 'name', 'description' ]
 
-class IsuueForm(ModelForm):
+class IssueForm(ModelForm):
+
+    class Meta:
+        model = Issue
+        fields = [ 'room', 'name', 'description' ]
+
+
+class TenantForm(ModelForm):
 
     class Meta:
         model = Issue

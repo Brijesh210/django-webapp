@@ -4,11 +4,8 @@ from django.http import request
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .models import User, Room
-from .forms import MyUserCreationForm, RoomForm
-
-
-# Create your views here.
+from .models import Issue, User, Room
+from .forms import MyUserCreationForm, RoomForm, IssueForm
 
 
 def home(request):
@@ -85,18 +82,20 @@ def roomForm(request):
     return render(request, "base/room_form.html", context)
 
 
-
-
 def issueForm(request):
-    form = issueForm()
+    form = IssueForm()
+    rooms = Room.objects.all()
 
     if request.method == "POST":
-        Room.objects.create(
-            owner=request.user,
+        room_id = request.POST.get('room')
+        print(room_id)
+        room = Room.objects.get(pk = room_id)
+        Issue.objects.create(
             name=request.POST.get("name"),
+            room = room,
             description=request.POST.get("description"),
         )
-        return redirect("home")
+        return redirect("issueForm")
 
-    context = {"form": form}
+    context = {"form": form, 'rooms': rooms}
     return render(request, "base/issue_form.html", context)
