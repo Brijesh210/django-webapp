@@ -1,0 +1,33 @@
+<style>
+  .home-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+  }
+</style>
+
+<h1>Hello {{user.username}}</h1>
+<a href="{% url 'roomForm' %}">create room</a>
+<hr />
+<div class="home-container">
+  <div>
+    <h3>Number of Houses</h3>
+    {%for room in rooms %}
+
+    <div>
+      <h5>Room: {{room}}</h5>
+    </div>
+    {%endfor%}
+    <hr />
+  </div>
+  <div>
+    <h3>Issues in house</h3>
+    <hr />
+   
+    
+  </div>
+
+  <div>
+    <h3>list of tenants under owner</h3>
+    <hr />
+  </div>
+</div>
