@@ -22,7 +22,8 @@ class IssueForm(ModelForm):
 
     class Meta:
         model = Issue
-        fields = [ 'room', 'name', 'description' ]
+        fields = [ 'owner', 'room', 'name', 'description' ]
+
 
 
 class TenantForm(ModelForm):

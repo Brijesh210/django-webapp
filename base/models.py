@@ -14,9 +14,10 @@ class User(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
 
+
 class Room(models.Model):
     name = models.CharField(max_length=50 , null=True, unique=True)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)    
+    owner = models.ManyToManyField(User)    
     description = models.TextField(max_length=200, null=True)
 
     def __str__(self):
@@ -27,11 +28,11 @@ class Room(models.Model):
 class Issue(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     name = models.CharField(max_length=50 , blank=True, null=True)
+    owner = models.ManyToManyField(User)
+
     description = models.TextField(max_length=300)
     isSolve = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
 
-    
-    # issue_image = models.ImageField(null = True, default="avatar.avg")

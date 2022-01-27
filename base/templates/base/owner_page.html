@@ -3,31 +3,67 @@
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
   }
+  .round-border-red {
+    border: 1px solid red;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  .round-border-green {
+    border: 1px solid green;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  .round-border-gray {
+    border: 1px solid gray;
+    border-radius: 8px;
+    padding: 5px;
+  }
+  .round-border-black {
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 5px;
+  }
 </style>
 
-<h1>Hello {{user.username}}</h1>
+<h3>Hello {{user.username}}</h3>
 <a href="{% url 'roomForm' %}">create room</a>
 <hr />
 <div class="home-container">
   <div>
-    <h3>Number of Houses</h3>
-    {%for room in rooms %}
-
+    <div class="round-border-black"><h3>Number of Houses</h3></div>
     <div>
-      <h5>Room: {{room}}</h5>
+      {%for room in rooms %}
+      <div>
+        <h5>Room: {{room}}</h5>
+      </div>
+      {%endfor%}
+      <hr />
     </div>
-    {%endfor%}
-    <hr />
   </div>
   <div>
-    <h3>Issues in house</h3>
-    <hr />
-   
-    
+    <div class="round-border-black"><h3>List of Isuues</h3></div>
+    <div>
+      {%for room in rooms %}
+      <div class="round-border-red">
+        <h1>Room: {{room}}</h1>
+        <hr />
+        <div class="round-border-green">
+          {% for issue in issues %} {% if issue.room == room %}
+          <div class="round-border-gray">
+            <h4>Room : {{issue.room.name}}</h4>
+            <h4>Issues: {{issue.name}}</h4>
+            <h4>Description: {{issue.description}}</h4>
+          </div>
+          {% endif %} {% endfor %}
+        </div>
+      </div>
+      {%endfor%}
+    </div>
   </div>
 
   <div>
-    <h3>list of tenants under owner</h3>
+    <div class="round-border-black"><h3>List of Tenant</h3></div>
+
     <hr />
   </div>
 </div>
