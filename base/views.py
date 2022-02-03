@@ -1,12 +1,13 @@
 from collections import namedtuple
+from statistics import mode
 from typing import ContextManager, FrozenSet
 from django.http import request
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Issue, User, Room
-from .forms import MyUserCreationForm, RoomForm, IssueForm
+from .models import Issue, User, Room, Tenant, Owner
+from .forms import OwnerForm, TenantForm, RoomForm, IssueForm
 from django.db.models import Q
 
 
@@ -15,12 +16,13 @@ def home(request):
     
     user = request.user
 
-    rooms = Room.objects.filter(owner=user)
-    issues = Issue.objects.filter(room__in=rooms)
-    print(rooms)
-    print(issues)
+    # rooms = Room.objects.filter(owner=user)
+    # issues = Issue.objects.filter(room__in=rooms)
+ 
+    # tenants = Tenant.objects.filter(id = user.id)
+    # print(tenants)
 
-    context = {'user': user, 'rooms': rooms, 'issues': issues}
+    context = {'user': user,}
     return render(request, "base/home.html", context)
 
 
@@ -59,21 +61,57 @@ def logoutPage(request):
 
 def registerPage(request):
 
-    form = MyUserCreationForm()
+    page = "signup"
+    context = {"page": page}
+
+    return render(request, "base/register_page.html", context)
+
+
+def ownerRegisterPage(request):
+    page = "ownerSignup"
+    form = OwnerForm()
 
     if request.method == "POST":
-        form = MyUserCreationForm(request.POST)
+        form = OwnerForm(request.POST)
+        
         if form.is_valid():
             user = form.save(commit="False")
             user.username = user.username.lower()
+            user.is_owner = True
+            owner = Owner(user=user)
+            owner.save()
             user.save()
             login(request, user)
             return redirect("home")
         else:
             messages.error(request, "Something went wrong with registraion")
 
-    context = {"form": form}
-    return render(request, "base/login_page.html", context)
+    context = {"form": form, "page": page}
+    return render(request, "base/register_page.html", context)
+
+
+def tenantRegisterPage(request):
+    page = "tenantSignup"
+    form = TenantForm()
+
+    if request.method == "POST":
+        form = TenantForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit="False")
+            user.is_tenant = True
+            user.save()
+
+            login(request, user)
+            return redirect("home")
+        else:
+            messages.error(request, "Something went wrong with registraion")
+
+    context = {"form": form, "page": page}
+    return render(request, "base/register_page.html", context)
+
+
+
+
 
 
 @login_required(login_url="loginPage")
@@ -83,7 +121,8 @@ def roomForm(request):
     if request.method == "POST":
         Room.objects.create(
             name=request.POST.get("name"),
-            description=request.POST.get("description"), 
+            address=request.POST.get("address"), 
+            owner=request.user,
         )
 
         return redirect("home")

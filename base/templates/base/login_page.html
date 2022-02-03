@@ -22,12 +22,7 @@
 </div>
 {% else %}
 <div>
-    <form method="POST" , action="">
-        {% csrf_token %} {{form.as_p}}
-        <input type="submit" value="Register" />
-    </form>
-    <p>already signed up.</p>
-    <a href="{% url 'loginPage' %}">Log in</a>
+    <h1>Error</h1>
 </div>
 {% endif %}
 {% endblock content %}

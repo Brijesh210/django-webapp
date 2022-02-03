@@ -1,13 +1,35 @@
 {%extends 'main.html' %}
 {% block content %}
-<div>
 
-    <form action="" method="post">
-        <label>Username:</label>
-        <input type="text" name="username" placeholder="Enter Username..." />
-    </form>
+{% if page == 'signup' %}
+
+<div>
+    <label>Sign up as:</label>
+    <p class="lead">Select below the type of account you want to create</p>
+    <a href="{% url 'ownerRegisterPage' %}" role="button">I'm a owner/a>
+    <a href="{% url 'tenantRegisterPage' %}" role="button">I'm a tenant</a>
+
     <p>Already signed up?</p>
     <a href="{% url 'loginPage' %}">Log in</a>
 </div>
 
+{% elif page == 'ownerSignup'%}
+<div>
+    <form method="POST" , action="">
+        {% csrf_token %} {{form.as_p}}
+        <input type="submit" value="Register" />
+    </form>
+    <p>already signed up.</p>
+    <a href="{% url 'loginPage' %}">Log in</a>
+</div>
+{% elif page == 'tenantSignup'%}
+<div>
+    <form method="POST" , action="">
+        {% csrf_token %} {{form.as_p}}
+        <input type="submit" value="Register" />
+    </form>
+    <p>already signed up.</p>
+    <a href="{% url 'loginPage' %}">Log in</a>
+</div>
+{% endif %}
 {% endblock content %} 

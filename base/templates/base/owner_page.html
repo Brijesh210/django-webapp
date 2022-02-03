@@ -63,7 +63,17 @@
 
   <div>
     <div class="round-border-black"><h3>List of Tenant</h3></div>
-
+    <div>
+      <div class="round-border-red">
+        {% for issue in issues %} 
+        <div class="round-border-gray">
+          <h4>Room : {{issue.room.name}}</h4>
+          <h4>Issues: {{issue.name}}</h4>
+          <h4>Description: {{issue.description}}</h4>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
     <hr />
   </div>
 </div>

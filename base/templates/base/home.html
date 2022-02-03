@@ -1,8 +1,8 @@
 {% extends 'main.html' %} {% block content %}
 
-{% if request.user.owner %}
+{% if user.is_owner == True %}
 {% include 'base/owner_page.html'%}
-{% else %}
+{% elif user.is_tenant == True %}
 {% include 'base/tenant_page.html'%}
 {% endif %}
 {% endblock content %}

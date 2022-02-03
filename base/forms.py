@@ -6,28 +6,33 @@ from django.contrib.auth.forms import UserCreationForm
 
 # from django.contrib.auth.models import User
 
-class MyUserCreationForm(UserCreationForm):
-
+class OwnerForm(UserCreationForm):
+    
     class Meta:
         model = User
-        fields = ['name', 'username', 'email', 'bio', 'owner']
+        model.is_owner = True
+        
+        fields = ['name', 'username', 'email', 'bio',]
+
+
+
+class TenantForm(UserCreationForm):
+    
+    class Meta:
+        model = User
+        model.is_tenant = True
+        fields = ['name', 'username', 'email', 'bio',]
+
 
 class RoomForm(ModelForm):
 
     class Meta:
         model = Room
-        fields = [ 'name', 'description' ]
+        fields = [ 'name', 'address' ]
+
 
 class IssueForm(ModelForm):
-
+    
     class Meta:
         model = Issue
         fields = [ 'owner', 'room', 'name', 'description' ]
-
-
-
-class TenantForm(ModelForm):
-
-    class Meta:
-        model = Issue
-        fields = [ 'room','name', 'description' ]
