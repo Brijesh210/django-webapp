@@ -1,38 +1,49 @@
 from django.db.models import fields
 from django.forms import ModelForm
-from .models import User, Room, Issue
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 
 
 # from django.contrib.auth.models import User
 
-class OwnerForm(UserCreationForm):
+
+class UserCreateForm(ModelForm):
     
     class Meta:
         model = User
-        model.is_owner = True
-        
-        fields = ['name', 'username', 'email', 'bio',]
+        fields = ['username', 'email', 'bio', 'groupId', 'residenceAddressId']
 
 
+class IssueCreateForm(ModelForm):
 
-class TenantForm(UserCreationForm):
-    
-    class Meta:
-        model = User
-        model.is_tenant = True
-        fields = ['name', 'username', 'email', 'bio',]
-
-
-class RoomForm(ModelForm):
-
-    class Meta:
-        model = Room
-        fields = [ 'name', 'address' ]
-
-
-class IssueForm(ModelForm):
-    
-    class Meta:
+    class Meta: 
         model = Issue
-        fields = [ 'owner', 'room', 'name', 'description' ]
+        fields = '__all__'
+        exclude = ['assigner', 'assignee', 'submitter' ]
+        # ass exclude in view.py before save/commit  
+
+
+
+class CommentsCreateForm(ModelForm):
+
+    class Meta: 
+        model = Comments
+        fields = ['messageText']
+        
+
+
+class AddressCreateForm(ModelForm):
+
+    class Meta: 
+        model = Address
+        fields = '__all__'
+        
+
+
+class PropertyCreateForm(ModelForm):
+
+    class Meta: 
+        model = Property
+        fields = '__all__'
+        exclude = ['ownerId']
+        # add ownerId from view

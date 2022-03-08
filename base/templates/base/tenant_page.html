@@ -6,6 +6,21 @@
   </style>
   
 <h1>Tenant: {{user.name}} </h1>
+<h5> My Owner: </h5>
+
+
+<form action="" method="POST" >
+  <label>Choose a owner:</label>
+  <select name="owners" id="myowner" >
+    {% for owner in owners %}
+    <option>{{owner.user.name}}</option>
+    {% endfor %}
+  </select>
+  <br><br>
+  <input type="submit" value="Update Owner">
+</form>
+
+</h5>
 <hr/>
 {% include 'base/tenant_form.html' %}
 
