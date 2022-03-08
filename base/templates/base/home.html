@@ -1,8 +1,16 @@
 {% extends 'main.html' %} {% block content %}
 
-{% if user.is_owner == True %}
-{% include 'base/owner_page.html'%}
-{% elif user.is_tenant == True %}
-{% include 'base/tenant_page.html'%}
+{% if user.id == 1 %}
+{% include 'base/home/owner_home.html'%}
+{% elif user.groupId_id == 2  %}
+{% include 'base/home/manager_home.html'%}
+{% elif user.groupId_id == 3  %}
+{% include 'base/home/assignee_home.html'%}
+{% elif user.groupId_id == 4 %}
+{% include 'base/home/tenant_home.html'%}
+{% else %}
+<h1> not working</h1>
 {% endif %}
+
+
 {% endblock content %}

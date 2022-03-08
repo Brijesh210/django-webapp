@@ -10,10 +10,10 @@ from .models import *
 from .forms import *
 from django.db.models import Q
 
-@login_required(login_url="loginPage")
-def home(request):
 
-    context = {'user': 'user'}
+def home(request):
+    user = request.user
+    context = {'user': user}
     return render(request, "base/home.html", context)
 
 
@@ -52,37 +52,37 @@ def home(request):
 #     return render(request, "base/home.html", context)
 
 
-# def loginPage(request):
-#     page = "login"
+def loginPage(request):
+    page = "login"
 
-#     if request.user.is_authenticated:
-#         return redirect("home")
+    if request.user.is_authenticated:
+        return redirect('home')
 
-#     if request.method == "POST":
-#         email = request.POST.get("email").lower()
-#         password = request.POST.get("password")
+    if request.method == "POST":
+        email = request.POST.get("email").lower()
+        password = request.POST.get("password")
 
-#         try:
-#             user = User.objects.get(email=email)
-#         except:
-#             messages.error(request, "User does not exist")
+        try:
+            user = User.objects.get(email=email)
+        except:
+            messages.error(request, "User does not exist")
 
-#         user = authenticate(request, email=email, password=password)
+        user = authenticate(request, email=email, password=password)
 
-#         if user is not None:
-#             login(request, user)
-#             return redirect("loginPage")
-#         else:
-#             messages.error(request, "usernaem or Password dosen't exist")
+        if user is not None:
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, "username or Password dosen't exist")
 
-#     context = {"page": page}
+    context = {"page": page}
 
-#     return render(request, "base/login_page.html", context)
+    return render(request, "base/login_page.html", context)
 
 
-# def logoutPage(request):
-#     logout(request)
-#     return redirect("loginPage")
+def logoutPage(request):
+    logout(request)
+    return redirect('home')
 
 
 # def registerPage(request):
