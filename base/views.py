@@ -11,13 +11,6 @@ from .forms import *
 from django.db.models import Q
 
 
-def home(request):
-    user = request.user
-    context = {'user': user}
-    return render(request, "base/home.html", context)
-
-
-
 # @login_required(login_url="loginPage")
 # def home(request):
 
@@ -56,6 +49,7 @@ def loginPage(request):
     page = "login"
 
     if request.user.is_authenticated:
+        print("redire")
         return redirect('home')
 
     if request.method == "POST":
@@ -71,18 +65,25 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
+            print("hello")
             return redirect('home')
         else:
             messages.error(request, "username or Password dosen't exist")
 
     context = {"page": page}
-
     return render(request, "base/login_page.html", context)
 
 
 def logoutPage(request):
     logout(request)
-    return redirect('home')
+    return redirect('loginPage')
+
+
+@login_required(login_url="loginPage")
+def home(request):
+    user = request.user
+    context = {'user': user}
+    return render(request, "base/home.html", context)
 
 
 # def registerPage(request):
@@ -161,12 +162,12 @@ def logoutPage(request):
 #     if request.method == "POST":
 
 #         owner = Owner.objects.get(id=request.POST.get('owner'))
-        
+
 #         tenant = Tenant(
-#             user = user, owner = owner 
+#             user = user, owner = owner
 #         )
 #         tenant.save()
-       
+
 
 #         room = Room.objects.get(id=request.POST.get('room'))
 #         room.tenant = tenant

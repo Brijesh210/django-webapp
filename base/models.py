@@ -26,7 +26,7 @@ class User(AbstractUser):
     groupId = models.ForeignKey(UserGroup, on_delete=models.CASCADE, null=True)
     residenceAddressId = models.ForeignKey(Address, on_delete=models.CASCADE, null=True) 
 
-
+    
 
 class Property(models.Model):
     name = models.CharField(max_length=50, null=True)
