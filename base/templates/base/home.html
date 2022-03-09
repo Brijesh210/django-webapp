@@ -1,6 +1,6 @@
 {% extends 'main.html' %} {% block content %}
 
-{% if user.id == 1 %}
+{% if user.groupId_id == 1 %}
 {% include 'base/home/owner_home.html'%}
 {% elif user.groupId_id == 2  %}
 {% include 'base/home/manager_home.html'%}

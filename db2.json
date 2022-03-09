@@ -1,0 +1,426 @@
+[
+    {
+      "model": "base.usergroup",
+      "pk": 1,
+      "fields": {
+        "groupName": "admin"
+      }
+    },
+    {
+      "model": "base.usergroup",
+      "pk": 2,
+      "fields": {
+        "groupName": "manager"
+      }
+    },
+    {
+      "model": "base.usergroup",
+      "pk": 3,
+      "fields": {
+        "groupName": "assignee"
+      }
+    },
+    {
+      "model": "base.usergroup",
+      "pk": 4,
+      "fields": {
+        "groupName": "tenant"
+      }
+    },
+    
+    {
+      "model": "base.address",
+      "pk": 1,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 2,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 3,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 4,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 5,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 6,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 7,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.address",
+      "pk": 8,
+      "fields": {
+          "street":"kujawska",  
+          "apartment":2,
+          "city":"gliwice",
+          "zipCode":44100,
+          "country":"poland"
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 16,
+      "fields": {
+        "groupId" : 1
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 1,
+      "fields": {
+        "name": "brijesh",
+        "email": "brijesh@email.com",
+        "username": "brijesh",
+        "password": "admin",
+        "bio": "brijesh admin bio",
+        "groupId" : 1,
+        "is_superuser": 1,
+        "is_staff": 1
+  
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 2,
+      "fields": {
+        "name": "manager 1",
+        "username": "manager1",
+        "email": "manager1@email.com",
+        "password": "Brijesh@210",
+        "bio": " manager1 bio",
+        "groupId" : 2
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 3,
+      "fields": {
+        "name": "manager 2",
+        "email": "manager2@email.com",
+        "username": "manager2",
+        "password": "Brijesh@210",
+        "bio": " manager2 bio",
+        "groupId" : 2
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 4,
+      "fields": {
+        "name": "manager 3",
+        "email": "manager3@email.com",
+        "username": "manager3",
+        "password": "Brijesh@210",
+        "bio": " manager3 bio",
+        "groupId" : 2
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 5,
+      "fields": {
+        "name": "manager 4",
+        "email": "manager4@email.com",
+        "username": "manager4",
+        "password": "Brijesh@210",
+        "bio": " manager4 bio",
+        "groupId" : 2
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 6,
+      "fields": {
+        "name": "assignee 1",
+        "email": "assignee1@email.com",
+        "username": "assignee1",
+        "password": "Brijesh@210",
+        "bio": "assignee 1 bio",
+        "groupId" : 3
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 7,
+      "fields": {
+        "name": "assignee 2",
+        "email": "assignee2@email.com",
+        "username": "assignee2",
+        "password": "Brijesh@210",
+        "bio": "assignee 2 bio",
+        "groupId" : 3
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 8,
+      "fields": {
+        "name": "assignee 3",
+        "email": "assignee3@email.com",
+        "username": "assignee3",
+        "password": "Brijesh@210",
+        "bio": "assignee 3 bio",
+        "groupId" : 3
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 9,
+      "fields": {
+        "name": "tenant 1",
+        "email": "tenant1@email.com",
+        "username": "tenant1",
+        "password": "Brijesh@210",
+        "bio": "tenant 1 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 10,
+      "fields": {
+        "name": "tenant 2",
+        "email": "tenant2@email.com",
+        "username": "tenant2",
+        "password": "Brijesh@210",
+        "bio": "tenant 2 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 11,
+      "fields": {
+        "name": "tenant 3",
+        "email": "tenant3@email.com",
+        "username": "tenant3",
+        "password": "Brijesh@210",
+        "bio": "tenant 3 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 12,
+      "fields": {
+        "name": "tenant 4",
+        "email": "tenant4@email.com",
+        "username": "tenant4",
+        "password": "Brijesh@210",
+        "bio": "tenant 4 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 13,
+      "fields": {
+        "name": "tenant 5",
+        "email": "tenant5@email.com",
+        "username": "tenant5",
+        "password": "Brijesh@210",
+        "bio": "tenant 5 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 14,
+      "fields": {
+        "name": "tenant 6",
+        "email": "tenant6@email.com",
+        "username": "tenant6",
+        "password": "Brijesh@210",
+        "bio": "tenant 6 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.user",
+      "pk": 15,
+      "fields": {
+        "name": "tenant 7",
+        "email": "tenant7@email.com",
+        "username": "tenant7",
+        "password": "Brijesh@210",
+        "bio": "tenant 7 bio",
+        "groupId" : 4
+      }
+    },
+    {
+      "model": "base.property",
+      "pk":1,
+      "fields": {
+        "name": "pro1",
+        "address": 1,
+        "ownerId":1,
+        "tenants":[9]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 2,
+      "fields": {
+        "name": "pro2",
+        "address": 2,
+        "ownerId":1,
+        "tenants":[10]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 3,
+      "fields": {
+        "name": "pro3",
+        "address": 3,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 4,
+      "fields": {
+        "name": "pro4",
+        "address": 4,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 5,
+      "fields": {
+        "name": "pro5",
+        "address": 5,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 6,
+      "fields": {
+        "name": "pro6",
+        "address": 6,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 7,
+      "fields": {
+        "name": "pro7",
+        "address": 7,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.property",
+      "pk": 8,
+      "fields": {
+        "name": "pro8",
+        "address": 8,
+        "ownerId":1,
+        "tenants":[11]
+      }
+    },
+    {
+      "model": "base.IssueCategory",
+      "pk": 1,
+      "fields": {
+        "title": "isuue title 1"
+      }
+    },
+    {
+      "model": "base.IssueCategory",
+      "pk":2,
+      "fields": {
+        "title": "isuue title 2"
+      } 
+    },
+    {
+      "model": "base.IssueCategory",
+      "pk": 3,
+      "fields": {
+        "title": "isuue title 3"
+      }
+    },
+    {
+      "model": "base.issue",
+      "pk": 1,
+      "fields":{
+        "name": "issue 1",
+        "description": "isuue 1 dis",
+        "category": 1,
+        "room": 1,
+        "assigner":2,
+        "assignee":3,
+        "submitter": 1,
+        "status": "statusENUM.CRE",
+        "created": "2012-09-23T16:50:35.709Z",
+        "updated": "2012-09-23T16:50:35.709Z"
+      }
+    }
+  ]

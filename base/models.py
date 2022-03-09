@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-
 # Create your models here.
 class UserGroup(models.Model):
     groupName = models.CharField(max_length=50, null=True)
@@ -19,13 +18,20 @@ class Address(models.Model):
     zipCode = models.IntegerField(null=True)
     country = models.CharField(max_length=10, null=True)  
 
+    def __str__(self) -> str:
+        return self.street + str(self.apartment)
+
 
 class User(AbstractUser):
+    name = models.CharField(max_length=200, null=True)
     email = models.EmailField(unique=True, null=True)
     bio = models.TextField(null=True)
+
     groupId = models.ForeignKey(UserGroup, on_delete=models.CASCADE, null=True)
     residenceAddressId = models.ForeignKey(Address, on_delete=models.CASCADE, null=True) 
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
     
 
 class Property(models.Model):
