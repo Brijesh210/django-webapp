@@ -11,7 +11,7 @@ class UserCreateForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['username','password', 'email', 'bio', 'groupId', 'residenceAddressId']
+        fields = ['name', 'username', 'email', 'bio', 'groupId', 'residenceAddressId']
 
 
 class IssueCreateForm(ModelForm):

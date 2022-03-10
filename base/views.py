@@ -58,5 +58,35 @@ def userRegisterPage(request):
     else:
         form = UserCreateForm()
 
-    return render(request, 'base/user_register_form.html', {'form': form})
+    return render(request, 'base/forms/user_register_form.html', {'form': form})
 
+
+def addressRegisterPage(request):
+
+    if request.method == 'POST':
+        form = AddressCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = AddressCreateForm()
+
+    return render(request, 'base/forms/address_register_form.html', {'form': form})
+
+
+def propertyRegisterPage(request):
+    user = request.user
+
+    if request.method == 'POST':
+        form = PropertyCreateForm(request.POST)
+        if form.is_valid():
+            addOwnerId = form.save(commit=False)
+            addOwnerId.ownerId = user
+            addOwnerId.save()
+            form.save_m2m()
+
+            return redirect('home')
+    else:
+        form = PropertyCreateForm()
+
+    return render(request, 'base/forms/property_register_form.html', {'form': form})
